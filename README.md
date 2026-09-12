@@ -1,32 +1,50 @@
 # Resume Evaluation & Candidate Management System
 
-A full-stack AI-powered application for automated resume parsing, candidate evaluation, and AI-generated feedback using LLM APIs.
+A full-stack AI-powered platform for **resume evaluation and intelligent candidate matching**.
 
-## Tech Stack
-- Frontend: React.js
-- Backend: FastAPI (Python)
-- Database: MongoDB
-- AI: LLM APIs (Groq)
+The system combines **FastAPI, React, MongoDB, LLM APIs, vector embeddings, ChromaDB, and algorithmic ranking** to evaluate resumes against job descriptions and help employers discover the most relevant candidates from a resume pool.
 
-## Features
-- PDF parsing and structured data extraction
-- AI-generated candidate insights and feedback
-- Automated profile analysis
-- RESTful API layer for document ingestion and text extraction
-- Full-stack application with React frontend and FastAPI backend
+---
 
-## Running Locally
+## Overview
 
-### Backend
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
+The system supports two core workflows:
 
-### Frontend
-```bash
-cd Frontend
-npm install
-npm start
-```
+### Candidate Workflow
+
+A candidate can:
+
+- Upload or provide their resume
+- Provide a job description
+- Receive an AI-generated resume evaluation
+- View match scores and compatibility analysis
+- Receive improvement recommendations
+- Access previous analysis results
+
+### Employer Workflow
+
+An employer can:
+
+- Create a job posting
+- Store the job description in MongoDB
+- Retrieve the most relevant candidates from the indexed resume pool
+- Rank candidates using semantic similarity and DSA-driven ranking logic
+
+The employer does **not** need to manually inspect every resume.
+
+Instead:
+
+```text
+Job Description
+      ↓
+Embedding
+      ↓
+Vector Search
+      ↓
+Relevant Resume Chunks
+      ↓
+Candidate Aggregation
+      ↓
+Ranking
+      ↓
+Top Candidates

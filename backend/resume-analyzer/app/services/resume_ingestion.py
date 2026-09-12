@@ -1,4 +1,4 @@
-from app.services.embedding_service import EmbeddingService
+from app.services.embedding_service import EmbeddingService, embedding_service
 from app.services.resume_chunker import ResumeChunker
 from app.services.vector_store import ResumeVectorStore
 
@@ -6,7 +6,7 @@ from app.services.vector_store import ResumeVectorStore
 class ResumeIngestionService:
     def __init__(self):
         self.chunker = ResumeChunker()
-        self.embedding_service = EmbeddingService()
+        self.embedding_service = embedding_service
         self.vector_store = ResumeVectorStore()
 
     def ingest_resume(

@@ -4,6 +4,7 @@ import styles from './Layout.module.css'
 const nav = [
   { to: '/', label: 'Analyze', icon: '⚡' },
   { to: '/history', label: 'History', icon: '🕓' },
+  { to: '/employer', label: 'Jobs', icon: '💼' },
 ]
 
 export default function Layout() {

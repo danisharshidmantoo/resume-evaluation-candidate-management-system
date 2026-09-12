@@ -1,10 +1,10 @@
-from app.services.embedding_service import EmbeddingService
+from app.services.embedding_service import embedding_service
 from app.services.vector_store import ResumeVectorStore
 from app.services import candidate_service
 
 class CandidateRetrievalService:
     def __init__(self):
-        self.embedding_service = EmbeddingService()
+        self.embedding_service = embedding_service
         self.vector_store = ResumeVectorStore()
 
     def retrieve(self, job_description: str, top_k: int = 5):

@@ -28,6 +28,14 @@ export const getAnalysis = (id) =>
 
 export const deleteAnalysis = (id) =>
   api.delete(`/resume/${id}`)
+export const createJob = (title, jobDescription) =>
+  api.post('/jobs/', {
+    title,
+    job_description: jobDescription,
+  })
+
+export const getJobMatches = (jobId) =>
+  api.get(`/jobs/${jobId}/matches`)
 
 export const checkHealth = () =>
   api.get('/health')
