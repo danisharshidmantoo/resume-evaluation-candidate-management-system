@@ -69,3 +69,19 @@ class ExtractedSkills(BaseModel):
 class SkillsExtractionResponse(BaseModel):
     skills: ExtractedSkills
     raw_text_length: int
+
+class Candidate(BaseModel):
+    id: Optional[str] = None
+    name: str
+    resume_text: str
+    created_at: Optional[datetime] = None
+class JobCreate(BaseModel):
+    title: str
+    job_description: str
+
+
+class Job(BaseModel):
+    id: Optional[str] = None
+    title: str
+    job_description: str
+    created_at: Optional[datetime] = None

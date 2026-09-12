@@ -1,1 +1,17 @@
-backend/resume-analyzer/.env
+# Python virtual environment
+backend/venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment variables
+.env
+
+# Local data
+backend/resume-analyzer/data/
+
+# Local ChromaDB
+backend/resume-analyzer/data/chroma/
+# macOS files
+.DS_Store

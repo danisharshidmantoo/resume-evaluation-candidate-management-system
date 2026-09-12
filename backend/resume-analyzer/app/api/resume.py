@@ -10,12 +10,17 @@ from app.models.schemas import (
     AnalyzeTextRequest,
     SkillsExtractionResponse,
 )
-from app.services import db_service, gemini_service
+from app.services import (
+    candidate_service,
+    db_service,
+    gemini_service,
+)
+from app.services.resume_ingestion import ResumeIngestionService
 from app.utils.file_parser import extract_text_from_file, validate_file_size
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
-
+ingestion_service = ResumeIngestionService()
 
 # ─── Analyze from raw text ────────────────────────────────────────────────────
 
@@ -97,6 +102,14 @@ async def analyze_resume_file(
         result = await gemini_service.analyze_resume(
             resume_text=resume_text,
             job_description=job_description,
+        )
+        candidate_id = await candidate_service.save_candidate(
+            name=result.candidateName,
+            resume_text=resume_text,
+        )
+        ingestion_result = ingestion_service.ingest_resume(
+            candidate_id=candidate_id,
+            resume_text=resume_text,
         )
         doc_id = await db_service.save_analysis(result, user_id=user_id)
         result.id = doc_id

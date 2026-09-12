@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 
 from app.core.config import settings
 from app.core.database import connect_db, close_db
-from app.api import resume, health
+from app.api import resume, health,jobs
 
 
 @asynccontextmanager
@@ -31,3 +31,4 @@ app.add_middleware(
 
 app.include_router(health.router, prefix="/api", tags=["Health"])
 app.include_router(resume.router, prefix="/api/resume", tags=["Resume"])
+app.include_router(jobs.router, prefix="/api/jobs", tags=["Jobs"])
